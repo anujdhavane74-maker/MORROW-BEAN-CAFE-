@@ -1,0 +1,363 @@
+/* ==========================================================================
+   MORROW & BEAN — Core Design Tokens & System
+   Crafted for KILT STUDIO Concept Showcase
+   ========================================================================== */
+
+:root {
+  /* Brand Color Tokens */
+  --color-oat-cream: #F4EFE6;
+  --color-espresso: #2A211C;
+  --color-terracotta: #B96545;
+  --color-terracotta-hover: #9E5133;
+  --color-terracotta-subtle: #F3EAE6;
+  --color-sage: #72765B;
+  --color-sage-subtle: #ECEEE7;
+  --color-warm-white: #FFFCF7;
+  --color-muted-taupe: #A89B8A;
+  --color-taupe-light: rgba(168, 155, 138, 0.24);
+  --color-espresso-subtle: rgba(42, 33, 28, 0.04);
+  --color-espresso-muted: rgba(42, 33, 28, 0.72);
+
+  /* Typography Tokens */
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Spacing Scale */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4.5rem;
+  --space-4xl: 6rem;
+  --space-5xl: 7.5rem;
+
+  /* Layout Widths */
+  --container-max: 1240px;
+  --container-narrow: 880px;
+  --container-padding: 1.5rem;
+
+  /* Border Radii (Modest corner radii, avoiding generic pill shapes) */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* Motion */
+  --ease-editorial: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --transition-fast: 180ms var(--ease-editorial);
+  --transition-base: 320ms var(--ease-editorial);
+  --transition-slow: 600ms var(--ease-editorial);
+}
+
+/* CSS Reset & Base Defaults */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-oat-cream);
+  color: var(--color-espresso);
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-oat-cream);
+  color: var(--color-espresso);
+  line-height: 1.65;
+  font-weight: 400;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Accessible focus styling */
+:focus-visible {
+  outline: 2px solid var(--color-terracotta);
+  outline-offset: 3px;
+}
+
+/* Global Typography Styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--color-espresso);
+}
+
+.serif-italic {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+}
+
+p {
+  color: var(--color-espresso-muted);
+  line-height: 1.7;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Container Utility */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+.container-narrow {
+  width: 100%;
+  max-width: var(--container-narrow);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+/* Section Spacing */
+.section {
+  padding-top: var(--space-4xl);
+  padding-bottom: var(--space-4xl);
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding-top: var(--space-3xl);
+    padding-bottom: var(--space-3xl);
+  }
+}
+
+/* Eyebrow Label */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-terracotta);
+  margin-bottom: 1rem;
+}
+
+.eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 1.5px;
+  background-color: var(--color-terracotta);
+}
+
+/* Editorial Section Header */
+.section-header {
+  margin-bottom: var(--space-3xl);
+}
+
+.section-header.text-center {
+  text-align: center;
+}
+
+.section-header.text-center .eyebrow::before {
+  display: none;
+}
+
+.section-title {
+  font-size: clamp(2rem, 3.5vw + 1rem, 3.25rem);
+  letter-spacing: -0.02em;
+  color: var(--color-espresso);
+  margin-bottom: 1rem;
+}
+
+.section-description {
+  font-size: 1.0625rem;
+  max-width: 580px;
+  color: var(--color-espresso-muted);
+}
+
+.section-header.text-center .section-description {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 0.8125rem 1.625rem;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-base);
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background-color: var(--color-terracotta);
+  color: var(--color-warm-white);
+  border: 1px solid var(--color-terracotta);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-terracotta-hover);
+  border-color: var(--color-terracotta-hover);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-espresso);
+  border: 1px solid var(--color-muted-taupe);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-warm-white);
+  border-color: var(--color-espresso);
+  transform: translateY(-1px);
+}
+
+.btn-dark {
+  background-color: var(--color-espresso);
+  color: var(--color-warm-white);
+  border: 1px solid var(--color-espresso);
+}
+
+.btn-dark:hover {
+  background-color: #1A1411;
+  transform: translateY(-1px);
+}
+
+.btn-subtle {
+  background-color: var(--color-warm-white);
+  color: var(--color-espresso);
+  border: 1px solid var(--color-taupe-light);
+}
+
+.btn-subtle:hover {
+  border-color: var(--color-terracotta);
+  color: var(--color-terracotta);
+}
+
+/* Subtle editorial dividers */
+.divider-subtle {
+  height: 1px;
+  background-color: var(--color-taupe-light);
+  width: 100%;
+}
+
+/* Card base */
+.card-warm {
+  background-color: var(--color-warm-white);
+  border: 1px solid var(--color-taupe-light);
+  border-radius: var(--radius-md);
+  transition: transform var(--transition-base), border-color var(--transition-base);
+}
+
+/* Editorial badge */
+.badge-concept {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--radius-xs);
+  background-color: var(--color-sage-subtle);
+  color: var(--color-sage);
+  border: 1px solid rgba(114, 118, 91, 0.2);
+}
+
+/* Dark Section Style */
+.section-dark {
+  background-color: var(--color-espresso);
+  color: var(--color-warm-white);
+}
+
+.section-dark h1,
+.section-dark h2,
+.section-dark h3,
+.section-dark h4 {
+  color: var(--color-warm-white);
+}
+
+.section-dark p {
+  color: rgba(255, 252, 247, 0.75);
+}
+
+.section-dark .eyebrow {
+  color: #D8896B;
+}
+
+.section-dark .eyebrow::before {
+  background-color: #D8896B;
+}
+
+.section-dark .divider-subtle {
+  background-color: rgba(255, 252, 247, 0.12);
+}
+
+/* Image loading skeleton & wrapper */
+.image-wrapper {
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(168, 155, 138, 0.15);
+}
+
+.image-skeleton {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(168, 155, 138, 0.1) 0%, rgba(168, 155, 138, 0.2) 50%, rgba(168, 155, 138, 0.1) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.8s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Accessibility: Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
